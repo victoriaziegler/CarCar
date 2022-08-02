@@ -9,6 +9,10 @@ class VehicleModelAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(Automobile)
-admin.site.register(Manufacturer)
+class AutomobileAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Automobile, AutomobileAdmin)
+admin.site.register(Manufacturer, ManufacturerAdmin)
 admin.site.register(VehicleModel, VehicleModelAdmin)

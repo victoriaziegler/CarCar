@@ -4,7 +4,6 @@ class ManufacturerList extends React.Component {
     constructor(props) {
         super(props)
         this.state = {manufacturers: []}
-        // this.deleteHat = this.deleteHat.bind(this);
     }
 
     async componentDidMount() {

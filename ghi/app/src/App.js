@@ -15,7 +15,6 @@ function App(props) {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/models" element={<VehicleModelsList />} />
-          {/* <Route path="/models/create" element={<VehicleModelsList />} /> */}
           <Route path="/models/create" element={<NewVehicleModelForm />} />
           <Route path="manufacturers">
             <Route index element={<ManufacturerList manufacturers={props.manufacturers} />} />
