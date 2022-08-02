@@ -3,35 +3,22 @@ import React from "react";
 class VehicleModelsList extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {models: []}
-
-    this.deleteModel = this.deleteModel.bind(this);
+    this.state = {vehiclesModels: []}
   }
 
-//   async componentDidMount() {
-//     const response = await fetch('http://localhost:8100/api/models/')
-//     if (response.ok) {
-//       const data = await response.json()
-//       this.setState({ models: data.models })
-//     }
-//   }
-
-  async deleteModel(model) {
-    const deleteUrl = `http://localhost:8100/api/models/${model.id}`
-    const fetchConfig = {
-      method: "delete"
+  async componentDidMount() {
+    const response = await fetch('http://localhost:8100/api/models/')
+    if (response.ok) {
+      const data = await response.json()
+      this.setState({ vehiclesModels: data.models })
     }
-    await fetch(deleteUrl, fetchConfig)
-
-    const idx = this.state.models.indexOf(model)
-    const updated_models = [...this.state.models]
-    updated_models.splice(idx, 1)
-    this.setState({ models: updated_models })
   }
 
   render() {
     return (
-        <table className="table table-striped">
+        <> 
+        <h1>Vehicle Models</h1>
+        <table className="table">
           <thead>
             <tr>
               <th>Name</th>
@@ -40,18 +27,17 @@ class VehicleModelsList extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.models.map(model => {
+            {this.state.vehiclesModels.map(vehicle => {
               return (
-                <tr key={model.id}>
-                    <td>{model.name}</td>
-                    <td>{model.manufacturer}</td>
-                    <td><img src={model.picture_url} width="300" /></td>
-                    <td><button className="btn btn-danger" onClick={() => this.deleteModel(model)}>Delete</button></td>
+                <tr key={vehicle.id}>
+                    <td>{vehicle.name}</td>
+                    <td>{vehicle.manufacturer.name}</td>
+                    <td><img src={vehicle.picture_url} width="200" /></td>
                 </tr>
               );
             })}
           </tbody>
-        </table>
+        </table> </>
     )
   }
 }
