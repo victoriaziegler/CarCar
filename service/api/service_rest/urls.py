@@ -3,6 +3,9 @@ from django.urls import path
 from .views import (
     api_services_appointments,
     api_technicians,
+    api_show_delete_update_service_appointment,
+    api_automobiles_vos,
+    api_show_delete_update_technician
 #     # api_manufacturers,
 #     # api_manufacturer,
 #     # api_vehicle_models,
@@ -20,6 +23,21 @@ urlpatterns = [
         api_technicians,
         name="api_technicians",
     ),
+    path(
+        'services/<int:pk>/',
+        api_show_delete_update_service_appointment,
+        name="show_delete_update_service_appointment"
+    ),
+    path(
+        'technicians/<int:pk>/',
+        api_show_delete_update_technician,
+        name="show_delete_update_technician"
+    ),
+    path(
+        "automobilesvos/",
+        api_automobiles_vos,
+        name="api_automobiles_vos",
+    )
 
     # path(
     #     "manufacturers/",
