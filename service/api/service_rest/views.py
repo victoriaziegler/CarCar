@@ -20,6 +20,11 @@ def api_services_appointments(request):
         # services = json.dumps(services, indent=4, sort_keys=True, default=str)
         # services.json.dumps('')
         print(services, "????????????????????????")
+        for service in services:
+            if service.vin in AutomobileVO.objects.values_list("vin", flat=True):
+                service.vip = True
+            else:
+                service.vip = False
         return JsonResponse(
             {"services": services},
             encoder=ServiceAppointmentEncoder,
@@ -36,22 +41,20 @@ def api_services_appointments(request):
 #         return JsonResponse({"message": "Does not exist"})
     else:
         mostrar = json.loads(request.body)
-        if AutomobileVO.objects.filter(vin=mostrar["vin"]).exists():
-            mostrar["vip"] = True
-            try:
-                if "technician" in mostrar:
-                    technician = Technician.objects.get(name=mostrar["technician"])
-                    mostrar["technician"] = technician
-            except Technician.DoesNotExist:
-                return JsonResponse(
-                    {"message": "No technician is name like that, pls try again"},
-                    status=400,
-                )
-            appointment = ServiceAppointment.objects.create(**mostrar)
+        try:
+            if "technician" in mostrar:
+                technician = Technician.objects.get(name=mostrar["technician"])
+                mostrar["technician"] = technician
+        except Technician.DoesNotExist:
             return JsonResponse(
-                appointment,
-                encoder=ServiceAppointmentEncoder,
-                safe=False,
+                {"message": "No technician is name like that, pls try again"},
+                status=400,
+            )
+        appointment = ServiceAppointment.objects.create(**mostrar)
+        return JsonResponse(
+            appointment,
+            encoder=ServiceAppointmentEncoder,
+            safe=False,
             )
 
 
