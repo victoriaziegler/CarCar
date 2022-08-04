@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
+
+from pkg_resources import require
+
 from .models import AutomobileVO, Customer, SaleRecord, SalesPerson
 from .encoders import (
     AutomobileVOEncoder,
@@ -30,6 +33,7 @@ def api_sales(request):
                 "automobile": the VIN for the automobile,
                 "customer": the purchaser(customer) of the sale,
                 "sales person": the sales person of the sale,
+                "is sold": the status of is sold for the automobile,
                 "href": URL to the sale,
             },
             ...
@@ -43,6 +47,7 @@ def api_sales(request):
         "automobile": the VIN for the automobile,
         "customer": the purchaser(customer) of the sale,
         "sales person": the sales person of the sale,
+        "is_sold": the status of is sold for the automobile,
     }
     """
     if request.method == "GET":
@@ -52,30 +57,33 @@ def api_sales(request):
             encoder=SaleRecordEncoder,
         )
     else:
-        try:
-            content = json.loads(request.body)
-
-            automobile_id = content["automobile_vo_id"]
-            automobile = AutomobileVO.objects.get(pk=automobile_id)
-            content["automobile"] = automobile
-
-            customer_id = content["customer_id"]
-            customer = Customer.objects.get(pk=customer_id)
-            content["customer"] = customer
-
-            sales_person_id = content["sales_person_id"]
-            sales_person = SalesPerson.object.get(pk=sales_person_id)
-            content["sales_person"] = sales_person
-            
-            sales = SaleRecord.objects.create(**content)
-            return JsonResponse(
-                sales,
-                encoder=SaleRecordEncoder,
-                safe=False,
-            )
-        except:
+        content = json.loads(request.body)
+        automobile = AutomobileVO.objects.get(vin=content["automobile"])
+        print("TYPE:", type(automobile))
+        if automobile.is_sold == False:
+            try:  
+                content["automobile"] = automobile
+                customer = Customer.objects.get(id=content["customer"])
+                content["customer"] = customer
+                sales_person = SalesPerson.objects.get(id=content["sales_person"])
+                content["sales_person"] = sales_person
+                automobile.is_sold = True
+                automobile.save()
+                sales = SaleRecord.objects.create(**content)
+                return JsonResponse(
+                    sales,
+                    encoder=SaleRecordEncoder,
+                    safe=False,
+                )
+            except:
+                    response = JsonResponse(
+                        {"message": "Could not create sale record"}
+                    )
+                    response.status_code = 400
+                    return response
+        else:
             response = JsonResponse(
-                {"message": "Could not create sale record"}
+                {"message": "Error - Car already sold"}
             )
             response.status_code = 400
             return response
@@ -159,6 +167,7 @@ def api_customer(request):
     """
     if request.method == "GET":
         customers = Customer.objects.all()
+        print("CUSTOMERS: ", customers)
         return JsonResponse(
             {"customers": customers},
             encoder=CustomerEncoder,
@@ -180,3 +189,28 @@ def api_customer(request):
             return response
 
 
+@require_http_methods(["GET"])
+def api_automobilevos(request):
+    if request.method == "GET":
+        autos = AutomobileVO.objects.all()
+        return JsonResponse(
+            {"autos": autos},
+            encoder=AutomobileVOEncoder,
+        )
+
+
+@require_http_methods(["GET"])
+def api_sales_person_record(request, sales_person_id=None):
+    if request.method == "GET":
+        if sales_person_id == None:
+            return JsonResponse(
+                {"message": "Invalid Sales Person ID"},
+                status=400,
+            )
+        else:
+            sales = SaleRecord.objects.filter(sales_person=sales_person_id)
+            return JsonResponse(
+                {"sales": sales},
+                encoder = SaleRecordEncoder,
+                safe=False,
+            )
