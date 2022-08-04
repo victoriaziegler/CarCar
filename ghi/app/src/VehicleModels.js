@@ -18,7 +18,7 @@ class VehicleModelsList extends React.Component {
     return (
         <> 
         <h1>Vehicle Models</h1>
-        <table className="table">
+        <table className="table table-dark table-striped border-warning">
           <thead>
             <tr>
               <th>Name</th>
