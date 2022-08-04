@@ -12,17 +12,15 @@ django.setup()
 from sales_rest.models import AutomobileVO
 
 def get_automobiles():
-    print("RUNNING FUNCTION")
     response = requests.get("http://inventory-api:8000/api/automobiles/")
-    print("RESPONSE", response)
     content = json.loads(response.content)
-    print("CONTENT", content)
     for auto in content["autos"]:
         try:
             AutomobileVO.objects.update_or_create(
                 import_href=auto["href"],
                 defaults={
                     "vin": auto["vin"],
+                    "is_sold": auto["is_sold"]
                 },
             )
         except Exception as e:
@@ -36,7 +34,7 @@ def poll():
             get_automobiles()
         except Exception as e:
             print(e, file=sys.stderr)
-        time.sleep(5)
+        time.sleep(15)
 
 
 if __name__ == "__main__":
