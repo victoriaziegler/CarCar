@@ -40,14 +40,14 @@ class SaleRecordForm extends React.Component {
     async handleSubmit(event) {
         event.preventDefault();
         const data = {...this.state};
-        data.sales_people = data.salesPerson;
+        data.sales_person = data.salesPerson;
         delete data.customers;
         delete data.salesPeople;
         delete data.salesPerson;
         delete data.automobiles;
+        console.log(data)
 
-        const salesUrl = 'http://localhost:8090/api/sales/new/';
-
+        const salesUrl = 'http://localhost:8090/api/sales/';
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -56,7 +56,20 @@ class SaleRecordForm extends React.Component {
             },
         };
         const response = await fetch(salesUrl, fetchConfig);
-        if (response.ok) {
+
+
+        let autoUrl = `http://localhost:8100/api/automobiles/${data.automobile}/`
+        let config = {
+            method: "put",
+            body: JSON.stringify({is_sold: true}),
+            headers: {
+                'Content-Type': 'applications/json',
+            },
+        };
+        let autoResponse = await fetch(autoUrl, config);
+
+
+        if (autoResponse.ok && response.ok) {
             const newSale = await response.json();
 
             const cleared = {
