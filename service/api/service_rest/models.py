@@ -12,7 +12,7 @@ class Technician(models.Model):
     employee_number = models.SmallIntegerField(unique=True)
 
 class ServiceAppointment(models.Model):
-    vin = models.CharField(max_length=17, null=True)
+    vin = models.CharField(max_length=17, null=True, unique=False)
     owner_name = models.CharField(max_length=66)
     # date_time = models.DateTimeField(null=True)
     date = models.DateField(null=True)
