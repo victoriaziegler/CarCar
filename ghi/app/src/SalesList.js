@@ -18,7 +18,7 @@ class SalesList extends React.Component {
         return (
             <React.Fragment>
                 <h2 className="display-5 fw-bold">All Sales</h2>
-                <table className="table table-striped">
+                <table className="table table-dark table-striped border-warning">
                     <thead>
                         <tr>
                             <th>Sales Person</th>

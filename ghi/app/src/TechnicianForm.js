@@ -28,7 +28,6 @@ class TechnicianForm extends React.Component {
     const response = await fetch(technicianUrl, fetchConfig);
     if (response.ok) {
       const newTechnician = await response.json();
-      console.log(newTechnician);
       this.setState({
         name: "",
         employee_number: "",
