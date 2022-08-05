@@ -24,7 +24,7 @@ class ServiceAppointment(models.Model):
         on_delete=models.CASCADE,
     )
     reason = models.CharField(max_length=50)
-    finished = models.BooleanField(default=False, null=True)
+    finished = models.BooleanField(default=False, null=True, blank=True)
     vip = models.BooleanField(default=False, null=True)
     # automobile was purchased from the dealership so that the concierge can give that customer "VIP treatment".
 

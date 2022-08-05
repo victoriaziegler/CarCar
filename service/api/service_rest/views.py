@@ -86,6 +86,7 @@ def api_show_delete_update_service_appointment(request, pk):
     else: # PUT
         try:
             content = json.loads(request.body)
+            print(content, "PAULPAULPAUL")
             service = ServiceAppointment.objects.get(id=pk)
 
             props = ["owner_name", "date", "time", "technician", "reason", "finished"]
@@ -169,6 +170,7 @@ def api_show_delete_update_technician(request, pk):
     else: # PUT
         try:
             content = json.loads(request.body)
+            # print(content, "HEREHERHDDHDHERHER")
             technn = Technician.objects.get(id=pk)
 
             props = ["name", "employee_number"]
