@@ -7,7 +7,7 @@ class SalesList extends React.Component {
     }
 
     async componentDidMount() {
-        const salesResponse = await fetch(`http://localhost:8090/api/sales_person_record/1/`);
+        const salesResponse = await fetch(`http://localhost:8090/api/sales/`);
         if (salesResponse.ok) {
         const salesData = await salesResponse.json();
         this.setState({sales: salesData.sales});
