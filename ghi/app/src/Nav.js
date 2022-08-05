@@ -12,7 +12,7 @@ function Nav() {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item dropdown bg-dark">
               <a className="nav-link dropdown-toggle bg-dark" data-bs-toggle="dropdown">Manufacturers</a>
-              <div class="dropdown-menu bg-dark">
+              <div className="dropdown-menu bg-dark">
               <li className="nav-item">
                 <NavLink className="nav-link" to="/manufacturers">Manufacturers</NavLink>
               </li>
@@ -23,7 +23,7 @@ function Nav() {
             </li>
             <li className="nav-item dropdown bg-dark">
               <a className="nav-link dropdown-toggle bg-dark" data-bs-toggle="dropdown">Automobiles</a>
-              <div class="dropdown-menu bg-dark">
+              <div className="dropdown-menu bg-dark">
               <li className="nav-item">
                 <NavLink className="nav-link" to="/automobiles">Automobiles</NavLink>
               </li>
@@ -34,7 +34,7 @@ function Nav() {
             </li>
             <li className="nav-item dropdown bg-dark">
               <a className="nav-link dropdown-toggle bg-dark" data-bs-toggle="dropdown">Vehicles</a>
-              <div class="dropdown-menu bg-dark">
+              <div className="dropdown-menu bg-dark">
               <li className="nav-item">
                 <NavLink className="nav-link" to="/models">Vehicle Models</NavLink>
               </li>
@@ -45,7 +45,7 @@ function Nav() {
             </li>
             <li className="nav-item dropdown bg-dark">
             <a className="nav-link dropdown-toggle bg-dark" data-bs-toggle="dropdown">Sales</a>
-            <div class="dropdown-menu bg-dark">
+            <div className="dropdown-menu bg-dark">
               <li className="nav-item">
                 <NavLink className="nav-link" to="/sales">All Sales</NavLink>
               </li>
@@ -59,7 +59,7 @@ function Nav() {
             </li>
             <li className="nav-item dropdown bg-dark">
               <a className="nav-link dropdown-toggle bg-dark" data-bs-toggle="dropdown">Services Appointments</a>
-              <div class="dropdown-menu bg-dark">
+              <div className="dropdown-menu bg-dark">
               <li className="nav-item">
               <NavLink className="nav-link" to="/services/new">Add Service appointment</NavLink>
               </li>
