@@ -17,9 +17,6 @@ class TechnicianEncoder(ModelEncoder):
         "employee_number",
         "id"
     ]
-    # encoders = {
-    #     "manufacturer": (),
-    # }
 
 
 class ServiceAppointmentEncoder(ModelEncoder):
@@ -36,6 +33,5 @@ class ServiceAppointmentEncoder(ModelEncoder):
         "id"
     ]
     encoders = {
-        # "vin": AutomobileVOEncoder(),
         "technician": TechnicianEncoder(),
     }

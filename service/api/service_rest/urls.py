@@ -6,10 +6,6 @@ from .views import (
     api_show_delete_update_service_appointment,
     api_automobiles_vos,
     api_show_delete_update_technician
-#     # api_manufacturers,
-#     # api_manufacturer,
-#     # api_vehicle_models,
-#     # api_vehicle_model,
 )
 
 urlpatterns = [
@@ -38,25 +34,4 @@ urlpatterns = [
         api_automobiles_vos,
         name="api_automobiles_vos",
     )
-
-    # path(
-    #     "manufacturers/",
-    #     api_manufacturers,
-    #     name="api_manufacturers",
-    # ),
-    # path(
-    #     "manufacturers/<int:pk>/",
-    #     api_manufacturer,
-    #     name="api_manufacturer",
-    # ),
-    # path(
-    #     "models/",
-    #     api_vehicle_models,
-    #     name="api_vehicle_models",
-    # ),
-    # path(
-    #     "models/<int:pk>/",
-    #     api_vehicle_model,
-    #     name="api_vehicle_model",
-    # ),
 ]
