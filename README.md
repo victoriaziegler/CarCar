@@ -15,7 +15,13 @@ Start with backend - create models and views for each microservice. We are using
 
 ## Service microservice
 
-Create a Technician model with the properties name and employee number, a Service Appointment model with the properties vin, owner name, date with DateField, time with TimeField, reason, finished BooleanField, vip BooleanField, and technician ForeignKey. An Automobile VO model will need to be created with a vin property to link to the inventory microservice and a poller.py file will be used to extract the data for use in the service microservice.
+* Create a Technician model with the properties name and employee number, so then be able to create the TechnicianForm. Double check on Insomnia if I can create a technician and how i will be able to assign it to a service (id? key? name? number?)
+* Create a Service Appointment model with the properties vin, owner name, date with DateField, time with TimeField, reason, finished BooleanField, vip BooleanField, and technician ForeignKey. Be able to connect them to the poller to use the automobiles we have in the inventory, through their VIN.
+* An Automobile VO model will need to be created with a vin property to link to the inventory microservice and double check if the Automobiles i have in the poller are the same as the VOs ones.
+* A poller.py file will be used to extract the data for use in the service microservice.
+* Create a service appointment list where it displays all of our pending service appointments and also where our personal can hit the "cancel" button if for some reason they have to cancel the appointment, a "finished" button to set the condition of finished in the database to true. While doing this, it will no longer render in the page but keep it in the database.
+* Create a page where our workers can search for all of the service appointments to a speficic vehicle (by their vin)
+* Add the links of all the services and form to the navbar so they can be displayed by our personal. 
 
 ## Sales microservice
 
