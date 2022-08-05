@@ -20,7 +20,6 @@ class ServicesAppointmentsHistory extends React.Component {
         event.preventDefault();
 
         const datos = this.state.services.filter((service) => {return service.vin === this.state.vin})
-        console.log(datos)
         this.setState({services: datos})
     }
 

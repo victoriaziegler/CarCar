@@ -62,15 +62,14 @@ class AutomobileForm extends React.Component {
 
     async componentDidMount() {
         const MobileUrl = 'http://localhost:8100/api/models/';
-    
-        const response = await fetch(MobileUrl);
-    
-        if (response.ok) {
-          const data = await response.json();
-          this.setState({models: data.models});
-        }
-      }
 
+        const response = await fetch(MobileUrl);
+
+        if (response.ok) {
+            const data = await response.json();
+            this.setState({ models: data.models });
+        }
+    }
 
     render() {
         return (
@@ -93,18 +92,16 @@ class AutomobileForm extends React.Component {
                             </div>
                             <div className="mb-3">
                                 <select value={this.state.model_id} onChange={this.handleChangeModel} required name="model_id" id="model_id" className="form-select">
-                                <option value="">Choose a Model</option>
-                                {this.state.models.map(model => {
+                                    <option value="">Choose a Model</option>
+                                    {this.state.models.map(model => {
                                         return (
-                                        <option key={model.id} value={model.id}>
-                                            {model.name}
-                                        </option>
+                                            <option key={model.id} value={model.id}>
+                                                {model.name}
+                                            </option>
                                         );
                                     })}
                                 </select>
                             </div>
-
-
                             <button className="btn btn-primary">Add</button>
                         </form>
                     </div>

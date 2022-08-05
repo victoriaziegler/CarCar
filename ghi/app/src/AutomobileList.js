@@ -10,7 +10,6 @@ class AutomobileList extends React.Component {
         this.getAutomobiles = this.getAutomobiles.bind(this);
     }
 
-
     async getAutomobiles() {
         const autoURL = 'http://localhost:8100/api/automobiles/';
         try {

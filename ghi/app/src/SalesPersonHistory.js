@@ -42,9 +42,6 @@ class SalesPersonHistory extends React.Component {
         }
     }
     
-    
-
-
     render() {
         return (
             <React.Fragment>
@@ -61,7 +58,7 @@ class SalesPersonHistory extends React.Component {
                             })}
                     </select>
                 </div>
-                <table className="table table-striped">
+                <table className="table table-dark table-striped border-warning">
                     <thead>
                         <tr>
                             <th>Sales Person</th>
