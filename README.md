@@ -12,6 +12,8 @@ Create Bounded Countexts excalidraw to define our bounded contexts, aggregate ro
 
 Start with backend - create models and views for each microservice. We are using information from our Inventory microservice via poller to get automobile data into our microservice's automobile value object. Once we our backend is complete we will create the front end via React components. 
 
+For more information abut the design of the project, please reference BoundedContexts.png where you will be able to see our logic in a graphic perspective.
+
 
 ## Service microservice
 
