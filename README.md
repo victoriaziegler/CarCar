@@ -8,11 +8,9 @@ Team:
 ## Design
 For the React JS files - Victoria worked on the Manufacturer Form, ManufacturerList, and Automobile List. Nicolas created the Vehicle Models Form, Models list, and Automobile Form. 
 
-Create Bounded Countexts excalidraw to define our bounded contexts, aggregate roots, aggregates, entities, and value objects to plan how our microservices should be modeled. Attached in it's own BoundedContexts.png file. 
+Create Bounded Countexts excalidraw to define our bounded contexts, aggregate roots, aggregates, entities, and value objects to plan how our microservices should be modeled. For more information abut the design of the project, please reference BoundedContexts.png where you will be able to see our logic in a graphic perspective.
 
 Start with backend - create models and views for each microservice. We are using information from our Inventory microservice via poller to get automobile data into our microservice's automobile value object. Once we our backend is complete we will create the front end via React components. 
-
-For more information abut the design of the project, please reference BoundedContexts.png where you will be able to see our logic in a graphic perspective.
 
 
 ## Service microservice
@@ -27,7 +25,13 @@ For more information abut the design of the project, please reference BoundedCon
 
 ## Sales microservice
 
-Create a SalesPerson model with the properties name and employee number, a Customer model with the properties name, address, and phone number, and a SaleRecord model with the properties automobile ForeignKey using automobilevo, salesperson ForeignKey, customer ForeignKey, and price. I will need to create an Automobile VO model to link to the SalesRecord model with a is sold property so I can mark the auto as sold after a record has been created so it is not able to be sold again. The automobile ForeignKey properties are tied to the inventory microservice will require a poller.py file to be able to extract the data for use in the sales microservice. 
+* Create a SalesPerson model with the properties name and employee number. This model will be used to create new sales people and assign them to Sales Records.
+* Create a Customer model with the properties name, address, and phone number. This model will be used to create new customers and assign them to Sales Records. 
+* Create a SaleRecord model with the properties automobile ForeignKey using automobilevo (see below), salesperson ForeignKey, customer ForeignKey, and price. This model will use it's own properties and the properties of the other three models to create new Sales Records with automobiles, sales person, and customer associated with each Sale.
+* Create an Automobile VO model to link to the SalesRecord model with a "is sold" property so I can mark the auto as sold after a record has been created so it is not able to be sold again. 
+* The automobile ForeignKey properties are tied to the inventory microservice and will require a poller.py file to be able to extract the data for use in the sales microservice. 
+* Forms will be created via React to add a new customer, add a new sale record, and add a new sales person
+* Lists will be created via React to list all sale records and list all sale record's filtered by sales person. 
 
 ## Running the program
 
