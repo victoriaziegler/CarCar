@@ -1,4 +1,3 @@
-from sales_rest.models import AutomobileVO
 import django
 import os
 import sys
@@ -10,6 +9,7 @@ sys.path.append("")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sales_project.settings")
 django.setup()
 
+from sales_rest.models import AutomobileVO
 
 def get_automobiles():
     response = requests.get("http://inventory-api:8000/api/automobiles/")
