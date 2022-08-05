@@ -36,7 +36,7 @@ Start with backend - create models and views for each microservice. We are using
 ## Running the program
 
 After cloning the repo from git lab to your local computer, please run the following commands to run the project:
-    - docker volume create beta-data 
-    - docker-compose build
-    - docker-compose up
+* docker volume create beta-data 
+* docker-compose build
+* docker-compose up
 Create data to use for this project via the forms on the website. This project uses React, you may open the project in your browser at http://localhost:3000/
