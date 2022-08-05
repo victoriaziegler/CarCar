@@ -2,8 +2,6 @@ from django.contrib import admin
 from .models import AutomobileVO, Technician, ServiceAppointment
 
 
-# Register your models here.
-
 class AutomobileVOAdmin(admin.ModelAdmin):
     pass
 

@@ -4,9 +4,8 @@ class ServiceAppointmentList extends React.Component {
   constructor(props) {
     super(props)
     this.state = {services: []}
-
-    // this.deleteShoe = this.deleteShoe.bind(this);
     this.deleteService = this.deleteService.bind(this);
+    this.finishService = this.finishService.bind(this);
   }
 
   async componentDidMount() {
@@ -31,10 +30,13 @@ class ServiceAppointmentList extends React.Component {
 
   async finishService(service) {
     const changeUrl = `http://localhost:8080/api/services/${service}/`
-    const data = {finished: true}
+
     const fetchConfig = {
-        method: "delete",
-        body: JSON.stringify({data}),
+        method: "put",
+        body: JSON.stringify({
+        finished: true,
+      }
+        ),
         headers: {
         'Content-Type': 'application/json',
         },
@@ -69,6 +71,7 @@ class ServiceAppointmentList extends React.Component {
           <tbody>
             {this.state.services.map(service => {
               return (
+                (service.finished===false) ?
                 <tr key={service.id}>
                     <td>{service.vin}</td>
                     <td>{service.owner_name}</td>
@@ -80,6 +83,7 @@ class ServiceAppointmentList extends React.Component {
                     <td><button className="btn btn-outline-danger" onClick={() => this.deleteService(service)}>Cancel</button></td>
                     <td><button className='btn btn-light' onClick={() => this.finishService(service.id)}>Finish</button></td>
                 </tr>
+                :null
               );
             })}
           </tbody>

@@ -22,12 +22,6 @@ class ServicesAppointmentsHistory extends React.Component {
         const datos = this.state.services.filter((service) => {return service.vin === this.state.vin})
         this.setState({services: datos})
     }
-
-    // await fetch(changeUrl, fetchConfig)
-    // const delId = this.state.services.indexOf(service)
-    // const remainingServices = [...this.state.services]
-    // remainingServices.splice(delId, 1)
-    // this.setState({ services: remainingServices })
     
     async componentDidMount() {
         const servicesUrl = 'http://localhost:8080/api/services/'
@@ -42,15 +36,6 @@ class ServicesAppointmentsHistory extends React.Component {
     render () {
         return (
             <>
-            {/* <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form> */}
             <h1>Service History</h1>
             <form className="form-inline" onSubmit={this.handleSubmit}
             id="specific-car-history">
@@ -69,6 +54,7 @@ class ServicesAppointmentsHistory extends React.Component {
                   <th>Appointment Time</th>
                   <th>Assigned Technician</th>
                   <th>Service Reason</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -81,6 +67,7 @@ class ServicesAppointmentsHistory extends React.Component {
                       <td>{service.time}</td>
                       <td>{service.technician.name}</td>
                       <td>{service.reason}</td>
+                      <td>{service.finished ? "finished" : "not yet"}</td>
                     </tr>
                   )
                 })}
@@ -91,18 +78,5 @@ class ServicesAppointmentsHistory extends React.Component {
         )        
     }
 }
-
-
-
   
 export default ServicesAppointmentsHistory
-
-// "vin",
-// "owner_name",
-// "date",
-// "time",
-// "technician",
-// "reason",
-// "finished",
-// "vip",
-// "id"

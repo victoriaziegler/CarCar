@@ -59,7 +59,6 @@ def api_sales(request):
     else:
         content = json.loads(request.body)
         automobile = AutomobileVO.objects.get(vin=content["automobile"])
-        print("TYPE:", type(automobile))
         if automobile.is_sold == False:
             try:  
                 content["automobile"] = automobile
@@ -167,7 +166,6 @@ def api_customer(request):
     """
     if request.method == "GET":
         customers = Customer.objects.all()
-        print("CUSTOMERS: ", customers)
         return JsonResponse(
             {"customers": customers},
             encoder=CustomerEncoder,

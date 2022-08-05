@@ -12,14 +12,6 @@ class ServiceAppointmentForm extends React.Component {
             technician: '',
             technicians: [],
         }
-        // "vin",
-        //     "owner_name",
-        //     "date",
-        //     "time",
-        //     "technician",
-        //     "reason",
-        //     "finished",
-        //     "vip",
         this.handleVinChange = this.handleVinChange.bind(this)
         this.handleOwnerNameChange = this.handleOwnerNameChange.bind(this)
         this.handleDateChange = this.handleDateChange.bind(this)
@@ -150,6 +142,5 @@ class ServiceAppointmentForm extends React.Component {
         )
     }
 }
-
 
 export default ServiceAppointmentForm;
