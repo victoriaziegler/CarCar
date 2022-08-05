@@ -10,7 +10,7 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item dropdown bg-dark">
+            <div className="nav-item dropdown bg-dark">
               <a className="nav-link dropdown-toggle bg-dark" data-bs-toggle="dropdown">Manufacturers</a>
               <div className="dropdown-menu bg-dark">
               <li className="nav-item">
@@ -20,8 +20,8 @@ function Nav() {
                 <NavLink className="nav-link" to="/manufacturers/new">Add A Manufacturer</NavLink>
               </li>
               </div>
-            </li>
-            <li className="nav-item dropdown bg-dark">
+            </div>
+            <div className="nav-item dropdown bg-dark">
               <a className="nav-link dropdown-toggle bg-dark" data-bs-toggle="dropdown">Automobiles</a>
               <div className="dropdown-menu bg-dark">
               <li className="nav-item">
@@ -31,8 +31,8 @@ function Nav() {
                 <NavLink className="nav-link" to="/automobiles/new">Add An Automobile</NavLink>
               </li>
               </div>
-            </li>
-            <li className="nav-item dropdown bg-dark">
+            </div>
+            <div className="nav-item dropdown bg-dark">
               <a className="nav-link dropdown-toggle bg-dark" data-bs-toggle="dropdown">Vehicles</a>
               <div className="dropdown-menu bg-dark">
               <li className="nav-item">
@@ -42,8 +42,8 @@ function Nav() {
                 <NavLink className="nav-link" to="/models/create">Add A Vehicle Model</NavLink>
               </li>
               </div>
-            </li>
-            <li className="nav-item dropdown bg-dark">
+            </div>
+            <div className="nav-item dropdown bg-dark">
             <a className="nav-link dropdown-toggle bg-dark" data-bs-toggle="dropdown">Sales</a>
             <div className="dropdown-menu bg-dark">
               <li className="nav-item">
@@ -56,8 +56,8 @@ function Nav() {
                 <NavLink className="nav-link" to="/sales/new">Add A Sale Record</NavLink>
               </li>
               </div>
-            </li>
-            <li className="nav-item dropdown bg-dark">
+            </div>
+            <div className="nav-item dropdown bg-dark">
               <a className="nav-link dropdown-toggle bg-dark" data-bs-toggle="dropdown">Services Appointments</a>
               <div className="dropdown-menu bg-dark">
               <li className="nav-item">
@@ -70,7 +70,7 @@ function Nav() {
               <NavLink className="nav-link" to="/services/search">Service History by VIN</NavLink>
               </li>
               </div>
-            </li>
+            </div>
             <li className="nav-item">
               <NavLink className="nav-link" to="/customers/new">Add A Customer</NavLink>
             </li>
