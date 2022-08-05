@@ -71,7 +71,6 @@ class SaleRecordForm extends React.Component {
 
     async componentDidMount() {
         const autoresponse = await fetch('http://localhost:8100/api/automobiles/');
-        console.log("RESPONSE", autoresponse)
     
         if(autoresponse.ok) {
             const autodata = await autoresponse.json();
@@ -79,7 +78,6 @@ class SaleRecordForm extends React.Component {
             let filteredAutos = {}
             let filtered = []
             for (let autos in autodata) {
-                console.log("autos", autodata[autos])
                 for (let i = 0; i < (autodata[autos]).length; i++) {
                     if (autodata[autos][i]["is_sold"] === false) {
                         filtered.push(autodata[autos][i])
@@ -94,7 +92,6 @@ class SaleRecordForm extends React.Component {
 
         if(salesPersonResponse.ok) {
             const salesPersonData = await salesPersonResponse.json();
-            console.log("SALESPERSONDATA", salesPersonData)
             this.setState({'salesPeople': salesPersonData.sales_people})
         }
 
@@ -102,7 +99,6 @@ class SaleRecordForm extends React.Component {
 
         if(customerResponse.ok) {
             const customerData = await customerResponse.json();
-            console.log("customerData", customerData)
             this.setState({'customers': customerData.customers})
         }
     }

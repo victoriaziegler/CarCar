@@ -10,7 +10,6 @@ class ManufacturerList extends React.Component {
         const response = await fetch('http://localhost:8100/api/manufacturers/');
         if (response.ok) {
         const data = await response.json();
-        console.log(data);
         this.setState({manufacturers: data.manufacturers});
         }
     }

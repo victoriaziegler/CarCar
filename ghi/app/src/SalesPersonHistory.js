@@ -8,39 +8,49 @@ class SalesPersonHistory extends React.Component {
             salesPeople: [],
         }
         this.handleSalesPersonChange = this.handleSalesPersonChange.bind(this);
+        this.getRecords = this.getRecords.bind(this);
     }
 
-    handleSalesPersonChange(event) {
+    async getRecords() {
+        const salesResponse = await fetch(`http://localhost:8090/api/sales_person_record/${this.state.salesPerson}/`);
+        if (salesResponse.ok) {
+            const salesData = await salesResponse.json();
+            this.setState({
+                'sales': salesData.sales,
+            })
+        }
+    }
+
+    async handleSalesPersonChange(event) {
         const value = event.target.value;
-        this.setState({salesPerson: value})
+        await this.setState({salesPerson: value})
+        this.getRecords()
     }
-
 
     async componentDidMount() {
         const salesPersonResponse = await fetch('http://localhost:8090/api/sales_people/');
-        const salesResponse = await fetch('http://localhost:8090/api/sales/');
+
         try {
-            if (salesPersonResponse.ok && salesResponse.ok) {
+            if (salesPersonResponse.ok) {
                 const salesPersonData = await salesPersonResponse.json();
-                const salesData = await salesResponse.json()
-                console.log("SALES PERSON", salesPersonData);
-                console.log("SALES", salesData)
                 this.setState({
-                    'salesPeople': salesPersonData.sales_people,
-                    'sales': salesData.sales,
+                    salesPeople: salesPersonData.sales_people
                 });
             };
         } catch (e) {
             console.error(e);
         }
     }
+    
+    
+
 
     render() {
         return (
             <React.Fragment>
                 <h2 className="display-5 fw-bold">Sales Person History</h2>
                 <div className="mb-3">
-                    <select onChange={this.handleSalesPersonChange} value={this.state.salesPerson} required name="sales_person" id="sales_person" className="form-select">
+                    <select onChange={this.handleSalesPersonChange} value= {this.state.salesPerson} name="sales_person" required id="sales_person" className="form-select">
                         <option value="">Choose a sales person</option>
                             {this.state.salesPeople.map(salesPerson => {
                                 return (
@@ -63,27 +73,17 @@ class SalesPersonHistory extends React.Component {
                     </thead>
                     <tbody>
                         {this.state.sales.map(sale => {
-                            return (
-                                <tr key={sale.id}>
-                                    <td>{sale.sales_person.name}</td>
-                                    <td>{sale.sales_person.employee_number}</td>
-                                    <td>{sale.customer.name}</td>
-                                    <td>{sale.automobile.vin}</td>
-                                    <td>${sale.price}</td>
-                                </tr>
-                            );
+                                return (
+                                    <tr key={sale.id}>
+                                        <td>{sale.sales_person.name}</td>
+                                        <td>{sale.sales_person.employee_number}</td>
+                                        <td>{sale.customer.name}</td>
+                                        <td>{sale.automobile.vin}</td>
+                                        <td>${sale.price}</td>
+                                    </tr>
+                                );
+                            // }
                         })}
-                    {/* {this.state.sales.filter(sale => sale.salesPerson.id.toString()===this.state.salesPerson).map(sale => {
-                        return (
-                            <tr key={sale.id}>
-                                <td>{sale.sales_person.name}</td>
-                                <td>{sale.sales_person.employee_number}</td>
-                                <td>{sale.customer.name}</td>
-                                <td>{sale.automobile.vin}</td>
-                                <td>${sale.price}</td>
-                            </tr>
-                        );
-                    })} */}
                     </tbody>
                 </table>
             </React.Fragment>
