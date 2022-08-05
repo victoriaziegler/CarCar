@@ -119,11 +119,11 @@ class ServiceAppointmentForm extends React.Component {
                                 <label htmlFor="owner_name">Owner name</label>
                             </div>
                             <div className="form-floating mb-3">
-                                <input onChange={this.handleDateChange} value={this.state.date} placeholder="Date" required type="text" name="date" id="date" className="form-control" />
+                                <input onChange={this.handleDateChange} value={this.state.date} placeholder="Date" required type="date" name="date" id="date" className="form-control" />
                                 <label htmlFor="date">Date</label>
                             </div>
                             <div className="form-floating mb-3">
-                                <input onChange={this.handleTimeChange} value={this.state.time} placeholder="Time" required type="text" name="time" id="time" className="form-control" />
+                                <input onChange={this.handleTimeChange} value={this.state.time} placeholder="Time" required type="time" name="time" id="time" className="form-control" />
                                 <label htmlFor="time">Time</label>
                             </div>
                             <div className="form-floating mb-3">
