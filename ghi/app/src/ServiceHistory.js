@@ -74,7 +74,7 @@ class ServicesAppointmentsHistory extends React.Component {
               <tbody>
                 {this.state.services.map(service => {
                   return (
-                    <tr key={service.vin}>
+                    <tr key={service.id}>
                       <td>{service.vin}</td>
                       <td>{service.owner_name}</td>
                       <td>{service.date}</td>
