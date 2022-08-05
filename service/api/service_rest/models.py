@@ -1,11 +1,14 @@
 from django.db import models
 
+
 class AutomobileVO(models.Model):
     vin = models.CharField(max_length=17, unique=True)
+
 
 class Technician(models.Model):
     name = models.TextField()
     employee_number = models.SmallIntegerField(unique=True)
+
 
 class ServiceAppointment(models.Model):
     vin = models.CharField(max_length=17, null=True, unique=False)

@@ -4,10 +4,10 @@ class NewVehicleModelForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-        name: "",
-        picture_url: "",
-        manufacturer: "",
-        manufacturers: [],
+      name: "",
+      picture_url: "",
+      manufacturer: "",
+      manufacturers: [],
     }
 
     this.handleChangeName = this.handleChangeName.bind(this);
@@ -18,7 +18,7 @@ class NewVehicleModelForm extends React.Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    const data = {...this.state};
+    const data = { ...this.state };
     delete data.manufacturers
     data.manufacturer_id = data.manufacturer
     delete data.manufacturer
@@ -34,7 +34,7 @@ class NewVehicleModelForm extends React.Component {
     const response = await fetch(vehicleModelUrl, fetchConfig);
     if (response.ok) {
       const newVehicleModel = await response.json();
-      const cleared ={
+      const cleared = {
         name: "",
         picture_url: "",
         manufacturer: "",
@@ -86,15 +86,15 @@ class NewVehicleModelForm extends React.Component {
               </div>
               <div className="form-floating mb-3">
                 <select onChange={this.handleChangeManufacturer} value={this.state.manufacturer} placeholder="Manufacturer" required name="manufacturer" id="manufacturer" className="form-select">
-                <option value="">Choose a manufacturer</option>
-                            {this.state.manufacturers.map(manufacturer => {
-                                return (
-                                    <option key={manufacturer.id} value={manufacturer.id}>
-                                    {manufacturer.name}
-                                    </option>
-                                )
-                            })}
-                            </select>
+                  <option value="">Choose a manufacturer</option>
+                  {this.state.manufacturers.map(manufacturer => {
+                    return (
+                      <option key={manufacturer.id} value={manufacturer.id}>
+                        {manufacturer.name}
+                      </option>
+                    )
+                  })}
+                </select>
               </div>
               <button className="btn btn-primary">Add</button>
             </form>

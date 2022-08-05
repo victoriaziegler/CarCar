@@ -34,7 +34,7 @@ def api_services_appointments(request):
             appointment,
             encoder=ServiceAppointmentEncoder,
             safe=False,
-            )
+        )
 
 
 @require_http_methods(["DELETE", "GET", "PUT"])
@@ -56,18 +56,19 @@ def api_show_delete_update_service_appointment(request, pk):
             service = ServiceAppointment.objects.get(id=pk)
             service.delete()
             return JsonResponse(
-            service,
-            encoder=ServiceAppointmentEncoder,
-            safe=False,
+                service,
+                encoder=ServiceAppointmentEncoder,
+                safe=False,
             )
         except ServiceAppointment.DoesNotExist:
             return JsonResponse({"message": "Does not exist"})
-    else: # PUT
+    else:  # PUT
         try:
             content = json.loads(request.body)
             service = ServiceAppointment.objects.get(id=pk)
 
-            props = ["owner_name", "date", "time", "technician", "reason", "finished"]
+            props = ["owner_name", "date", "time",
+                     "technician", "reason", "finished"]
             for prop in props:
                 if prop in content:
                     setattr(service, prop, content[prop])
@@ -107,6 +108,7 @@ def api_technicians(request):
             response.status_code = 400
             return response
 
+
 @require_http_methods(["DELETE", "GET", "PUT"])
 def api_show_delete_update_technician(request, pk):
     if request.method == "GET":
@@ -126,13 +128,13 @@ def api_show_delete_update_technician(request, pk):
             tech = Technician.objects.get(id=pk)
             tech.delete()
             return JsonResponse(
-            tech,
-            encoder=TechnicianEncoder,
-            safe=False,
+                tech,
+                encoder=TechnicianEncoder,
+                safe=False,
             )
         except Technician.DoesNotExist:
             return JsonResponse({"message": "Technican does not exist"})
-    else: # PUT
+    else:  # PUT
         try:
             content = json.loads(request.body)
             technn = Technician.objects.get(id=pk)

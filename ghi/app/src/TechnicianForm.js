@@ -15,7 +15,7 @@ class TechnicianForm extends React.Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    const data = {...this.state};
+    const data = { ...this.state };
 
     const technicianUrl = 'http://localhost:8080/api/technicians/';
     const fetchConfig = {
@@ -66,7 +66,7 @@ class TechnicianForm extends React.Component {
         </div>
       </div>
     );
-}
+  }
 }
 
 export default TechnicianForm;

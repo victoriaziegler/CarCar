@@ -60,11 +60,12 @@ def api_sales(request):
         content = json.loads(request.body)
         automobile = AutomobileVO.objects.get(vin=content["automobile"])
         if automobile.is_sold == False:
-            try:  
+            try:
                 content["automobile"] = automobile
                 customer = Customer.objects.get(id=content["customer"])
                 content["customer"] = customer
-                sales_person = SalesPerson.objects.get(id=content["sales_person"])
+                sales_person = SalesPerson.objects.get(
+                    id=content["sales_person"])
                 content["sales_person"] = sales_person
                 automobile.is_sold = True
                 automobile.save()
@@ -75,11 +76,11 @@ def api_sales(request):
                     safe=False,
                 )
             except:
-                    response = JsonResponse(
-                        {"message": "Could not create sale record"}
-                    )
-                    response.status_code = 400
-                    return response
+                response = JsonResponse(
+                    {"message": "Could not create sale record"}
+                )
+                response.status_code = 400
+                return response
         else:
             response = JsonResponse(
                 {"message": "Error - Car already sold"}
@@ -209,6 +210,6 @@ def api_sales_person_record(request, sales_person_id=None):
             sales = SaleRecord.objects.filter(sales_person=sales_person_id)
             return JsonResponse(
                 {"sales": sales},
-                encoder = SaleRecordEncoder,
+                encoder=SaleRecordEncoder,
                 safe=False,
             )

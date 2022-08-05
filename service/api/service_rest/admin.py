@@ -9,6 +9,7 @@ class AutomobileVOAdmin(admin.ModelAdmin):
 class TechnicianAdmin(admin.ModelAdmin):
     pass
 
+
 class ServiceAppointmentAdmin(admin.ModelAdmin):
     pass
 

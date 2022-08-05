@@ -3,7 +3,7 @@ import React from "react";
 class ServiceAppointmentList extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {services: []}
+    this.state = { services: [] }
     this.deleteService = this.deleteService.bind(this);
     this.finishService = this.finishService.bind(this);
   }
@@ -32,14 +32,14 @@ class ServiceAppointmentList extends React.Component {
     const changeUrl = `http://localhost:8080/api/services/${service}/`
 
     const fetchConfig = {
-        method: "put",
-        body: JSON.stringify({
+      method: "put",
+      body: JSON.stringify({
         finished: true,
       }
-        ),
-        headers: {
+      ),
+      headers: {
         'Content-Type': 'application/json',
-        },
+      },
     }
     await fetch(changeUrl, fetchConfig)
     const delId = this.state.services.indexOf(service)
@@ -47,12 +47,12 @@ class ServiceAppointmentList extends React.Component {
     remainingServices.splice(delId, 1)
     this.setState({ services: remainingServices })
 
-}
+  }
 
 
   render() {
     return (
-        <> 
+      <>
         <h1>Service Appointments</h1>
         <table className="table table-dark table-striped border-warning">
           <thead>
@@ -71,8 +71,8 @@ class ServiceAppointmentList extends React.Component {
           <tbody>
             {this.state.services.map(service => {
               return (
-                (service.finished===false) ?
-                <tr key={service.id}>
+                (service.finished === false) ?
+                  <tr key={service.id}>
                     <td>{service.vin}</td>
                     <td>{service.owner_name}</td>
                     <td>{service.date}</td>
@@ -82,8 +82,8 @@ class ServiceAppointmentList extends React.Component {
                     <td>{service.vip ? "VIP" : "Nope"}</td>
                     <td><button className="btn btn-outline-danger" onClick={() => this.deleteService(service)}>Cancel</button></td>
                     <td><button className='btn btn-light' onClick={() => this.finishService(service.id)}>Finish</button></td>
-                </tr>
-                :null
+                  </tr>
+                  : null
               );
             })}
           </tbody>
@@ -91,5 +91,5 @@ class ServiceAppointmentList extends React.Component {
     )
   }
 }
-  
+
 export default ServiceAppointmentList

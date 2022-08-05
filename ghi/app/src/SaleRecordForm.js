@@ -19,27 +19,27 @@ class SaleRecordForm extends React.Component {
 
     handleAutomobileChange(event) {
         const value = event.target.value;
-        this.setState({automobile: value})
+        this.setState({ automobile: value })
     }
 
     handleSalesPersonChange(event) {
         const value = event.target.value;
-        this.setState({salesPerson: value})
+        this.setState({ salesPerson: value })
     }
 
     handleCustomerChange(event) {
         const value = event.target.value;
-        this.setState({customer: value})
+        this.setState({ customer: value })
     }
 
     handlePriceChange(event) {
         const value = event.target.value;
-        this.setState({price: value})
+        this.setState({ price: value })
     }
 
     async handleSubmit(event) {
         event.preventDefault();
-        const data = {...this.state};
+        const data = { ...this.state };
         data.sales_person = data.salesPerson;
         delete data.customers;
         delete data.salesPeople;
@@ -60,7 +60,7 @@ class SaleRecordForm extends React.Component {
         let autoUrl = `http://localhost:8100/api/automobiles/${data.automobile}/`
         let config = {
             method: "put",
-            body: JSON.stringify({is_sold: true}),
+            body: JSON.stringify({ is_sold: true }),
             headers: {
                 'Content-Type': 'applications/json',
             },
@@ -75,7 +75,7 @@ class SaleRecordForm extends React.Component {
                 automobile: '',
                 salesPerson: '',
                 customer: '',
-                price: '',             
+                price: '',
             };
             this.setState(cleared);
         }
@@ -83,8 +83,8 @@ class SaleRecordForm extends React.Component {
 
     async componentDidMount() {
         const autoresponse = await fetch('http://localhost:8100/api/automobiles/');
-    
-        if(autoresponse.ok) {
+
+        if (autoresponse.ok) {
             const autodata = await autoresponse.json();
 
             let filteredAutos = {}
@@ -95,27 +95,27 @@ class SaleRecordForm extends React.Component {
                         filtered.push(autodata[autos][i])
                     }
                 }
-            filteredAutos[autos] = filtered
-            this.setState({'automobiles': filteredAutos.autos})
+                filteredAutos[autos] = filtered
+                this.setState({ 'automobiles': filteredAutos.autos })
+            }
         }
-    }
 
         const salesPersonResponse = await fetch('http://localhost:8090/api/sales_people/');
 
-        if(salesPersonResponse.ok) {
+        if (salesPersonResponse.ok) {
             const salesPersonData = await salesPersonResponse.json();
-            this.setState({'salesPeople': salesPersonData.sales_people})
+            this.setState({ 'salesPeople': salesPersonData.sales_people })
         }
 
         const customerResponse = await fetch('http://localhost:8090/api/customers/')
 
-        if(customerResponse.ok) {
+        if (customerResponse.ok) {
             const customerData = await customerResponse.json();
-            this.setState({'customers': customerData.customers})
+            this.setState({ 'customers': customerData.customers })
         }
     }
 
-    render () {
+    render() {
         return (
             <div className="my-5 container">
                 <div className="row">
@@ -123,7 +123,7 @@ class SaleRecordForm extends React.Component {
                         <div className="shadow p-4 mt-4">
                             <h1>Create a new sale record</h1>
                             <form onSubmit={this.handleSubmit} id="create-sale-record-form">
-                            <div className="mb-3">
+                                <div className="mb-3">
                                     <select onChange={this.handleAutomobileChange} value={this.state.automobile} required name="automobile" id="automobile" className="form-select">
                                         <option value="">Choose an automobile</option>
                                         {this.state.automobiles.map(automobile => {
@@ -161,7 +161,7 @@ class SaleRecordForm extends React.Component {
                                 </div>
                                 <div className="form-floating mb-3">
                                     <input onChange={this.handlePriceChange} value={this.state.price} placeholder="Price" required type="number" name="price"
-                                        id="price" className="form-control"/>
+                                        id="price" className="form-control" />
                                     <label htmlFor="price">Price</label>
                                 </div>
                                 <button className="btn btn-primary">Create</button>

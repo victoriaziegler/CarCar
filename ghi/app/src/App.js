@@ -33,18 +33,18 @@ function App(props) {
           <Route path="manufacturers">
             <Route index element={<ManufacturerList manufacturers={props.manufacturers} />} />
             <Route path="new" element={<ManufacturerForm />} />
-          </Route> 
+          </Route>
           <Route path="automobiles">
             <Route index element={<AutomobileList automobiles={props.automobiles} />} />
             <Route path="new" element={<AutomobileForm />} />
-          </Route> 
+          </Route>
           <Route path="sales_people/new" element={<SalesPersonForm />} />
           <Route path="customers/new" element={<NewCustomerForm />} />
           <Route path="sales">
             <Route index element={<SalesList sales={props.sales} />} />
             <Route path="new" element={<SaleRecordForm />} />
           </Route>
-          <Route path="sales_person_record" element={<SalesPersonHistory sales={props.sales} salespeople={props.salesPeopleData} />} /> 
+          <Route path="sales_person_record" element={<SalesPersonHistory sales={props.sales} salespeople={props.salesPeopleData} />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -23,7 +23,7 @@ class SalesPersonHistory extends React.Component {
 
     async handleSalesPersonChange(event) {
         const value = event.target.value;
-        await this.setState({salesPerson: value})
+        await this.setState({ salesPerson: value })
         this.getRecords()
     }
 
@@ -41,21 +41,21 @@ class SalesPersonHistory extends React.Component {
             console.error(e);
         }
     }
-    
+
     render() {
         return (
             <React.Fragment>
                 <h2 className="display-5 fw-bold">Sales Person History</h2>
                 <div className="mb-3">
-                    <select onChange={this.handleSalesPersonChange} value= {this.state.salesPerson} name="sales_person" required id="sales_person" className="form-select">
+                    <select onChange={this.handleSalesPersonChange} value={this.state.salesPerson} name="sales_person" required id="sales_person" className="form-select">
                         <option value="">Choose a sales person</option>
-                            {this.state.salesPeople.map(salesPerson => {
-                                return (
-                                    <option key={salesPerson.id} value={salesPerson.id}>
-                                        {salesPerson.name}
-                                    </option>
-                                )
-                            })}
+                        {this.state.salesPeople.map(salesPerson => {
+                            return (
+                                <option key={salesPerson.id} value={salesPerson.id}>
+                                    {salesPerson.name}
+                                </option>
+                            )
+                        })}
                     </select>
                 </div>
                 <table className="table table-dark table-striped border-warning">
@@ -70,15 +70,15 @@ class SalesPersonHistory extends React.Component {
                     </thead>
                     <tbody>
                         {this.state.sales.map(sale => {
-                                return (
-                                    <tr key={sale.id}>
-                                        <td>{sale.sales_person.name}</td>
-                                        <td>{sale.sales_person.employee_number}</td>
-                                        <td>{sale.customer.name}</td>
-                                        <td>{sale.automobile.vin}</td>
-                                        <td>${sale.price}</td>
-                                    </tr>
-                                );
+                            return (
+                                <tr key={sale.id}>
+                                    <td>{sale.sales_person.name}</td>
+                                    <td>{sale.sales_person.employee_number}</td>
+                                    <td>{sale.customer.name}</td>
+                                    <td>{sale.automobile.vin}</td>
+                                    <td>${sale.price}</td>
+                                </tr>
+                            );
                             // }
                         })}
                     </tbody>
