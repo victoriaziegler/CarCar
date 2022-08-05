@@ -20,3 +20,10 @@ Create a Technician model with the properties name and employee number, a Servic
 
 Create a SalesPerson model with the properties name and employee number, a Customer model with the properties name, address, and phone number, and a SaleRecord model with the properties automobile ForeignKey using automobilevo, salesperson ForeignKey, customer ForeignKey, and price. I will need to create an Automobile VO model to link to the SalesRecord model with a is sold property so I can mark the auto as sold after a record has been created so it is not able to be sold again. The automobile ForeignKey properties are tied to the inventory microservice will require a poller.py file to be able to extract the data for use in the sales microservice. 
 
+## Running the program
+
+After cloning the repo from git lab to your local computer, please run the following commands to run the project:
+    - docker volume create beta-data 
+    - docker-compose build
+    - docker-compose up
+Create data to use for this project via the forms on the website. This project uses React, you may open the project in your browser at http://localhost:3000/
