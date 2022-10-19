@@ -3,6 +3,10 @@
 Team:
 Victoria Ziegler and Nicolas Asparria
 
+## Graphical Human Interface
+
+Please view ghi.md to easily access screenshots of the various web pages and functionality featured in this program.
+
 ## Running the program
 
 After cloning the repo from git lab to your local computer, please run the following commands to run the project. After the following commands have been run, create data to use for this project via the forms on the website. This project uses React, you may open the project in your browser at http://localhost:3000/
