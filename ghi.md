@@ -7,6 +7,25 @@ The home page is the main page that users will see upon first visiting the CarCa
 
 ![home](wireframes/home.png)
 
+## Sales Pages
+
+The List All Sales page lists all automobile sales histories for all sales people registered in the database. 
+The add a sale page has a form that allows the sales person to input their sale details to be featured on the list sales page. 
+The Sales Person History page lists the sales history based on one singular chosen sales person.
+
+![all_sales](wireframes/all_sales.png)
+![add_sale](wireframes/add_sale.png)
+![sales_person_history](wireframes/sales_person_history.png)
+
+## Service Appointments Pages
+
+The List All Sales page lists all automobile sales histories for all sales people registered in the database. 
+The add a sale page has a form that allows the sales person to input their sale details to be featured on the list sales page. 
+The Sales Person History page lists the sales history based on one singular chosen sales person.
+
+![all_sales](wireframes/all_sales.png)
+![add_sale](wireframes/add_sale.png)
+![sales_person_history](wireframes/sales_person_history.png)
 
 ## Manufacturers Pages
 
@@ -28,26 +47,6 @@ The automobiles page lists all automobiles registered in the database. The add a
 
 ![automobiles](wireframes/automobiles.png)
 ![add_automobile](wireframes/add_automobile.png)
-
-## Sales Pages
-
-The List All Sales page lists all automobile sales histories for all sales people registered in the database. 
-The add a sale page has a form that allows the sales person to input their sale details to be featured on the list sales page. 
-The Sales Person History page lists the sales history based on one singular chosen sales person.
-
-![all_sales](wireframes/all_sales.png)
-![add_sale](wireframes/add_sale.png)
-![sales_person_history](wireframes/sales_person_history.png)
-
-## Service Appointments Pages
-
-The List All Sales page lists all automobile sales histories for all sales people registered in the database. 
-The add a sale page has a form that allows the sales person to input their sale details to be featured on the list sales page. 
-The Sales Person History page lists the sales history based on one singular chosen sales person.
-
-![all_sales](wireframes/all_sales.png)
-![add_sale](wireframes/add_sale.png)
-![sales_person_history](wireframes/sales_person_history.png)
 
 ## Add A Customer Page
 
