@@ -41,13 +41,13 @@ The Sales Person History page lists the sales history based on one singular chos
 
 ## Service Appointments Pages
 
-The List All Sales page lists all automobile sales histories for all sales people registered in the database. 
-The add a sale page has a form that allows the sales person to input their sale details to be featured on the list sales page. 
-The Sales Person History page lists the sales history based on one singular chosen sales person.
+The List All Service Appointments page lists all automobile service appointment histories for all VINs registered in the database. 
+The add an appointment page has a form that allows the technician to input their appointment details to be featured on the list appointments page. 
+The VIN History page lists the VIN's service appointment history based on one singular chosen VIN.
 
-![all_sales](wireframes/all_sales.png)
-![add_sale](wireframes/add_sale.png)
-![sales_person_history](wireframes/sales_person_history.png)
+![all_appointments](wireframes/all_appointments.png)
+![add_appointment](wireframes/add_appointment.png)
+![vin_history](wireframes/vin_history.png)
 
 ## Add A Customer Page
 
